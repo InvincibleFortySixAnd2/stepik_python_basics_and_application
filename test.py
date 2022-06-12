@@ -1,19 +1,18 @@
-from random import random
+# Вам необходимо найти в папке main все директории, в которых есть хотя бы
+# один файл с расширением ".py".Ответом на данную задачу будет являться файл
+# со списком таких директорий, отсортированных в лексикографическом порядке.
 
-class RandomIterator():
-    def __iter__(self):
-        return self
+import os
+import os.path
 
-    def __init__(self, k):
-        self.k = k
-        self.i = 0
+content = []
 
-    def __next__(self):
-        if self.i < self.k:
-            self.i += 1
-            return random()
-        else:
-            raise StopIteration
+for current_dir, dirs, files in os.walk('main'):
+    for file in files:
+        if 'py' in file:
+            content.append(current_dir)
+            # print(current_dir, dirs, files)
 
-for x in RandomIterator(10):
-    print(x)
+
+print(content)
+# print(current_dir, dirs, files)
