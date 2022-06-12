@@ -12,7 +12,7 @@
 # c
 # ab
 
-with open('test.txt', 'r') as f_in, open('test_out.txt', 'w') as f_out:
+with open('2.4_open_write_files.txt', 'r') as f_in, open('test_out.txt', 'w') as f_out:
     lines = f_in.read().splitlines()
     lines = lines[::-1]
     contents = '\n'.join(lines)

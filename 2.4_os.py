@@ -3,16 +3,17 @@
 # со списком таких директорий, отсортированных в лексикографическом порядке.
 
 import os
-import os.path
 
-content = []
+answer = []
 
-for current_dir, dirs, files in os.walk('main'):
-    for file in files:
-        if 'py' in file:
-            content.append(current_dir)
-            # print(current_dir, dirs, files)
+# Поиск всех необходимых директорий
+for current_dir, dirs, names in os.walk('main'):
+    for name in names:
+        if '.py' in name and current_dir not in answer:
+            answer.append(current_dir)
 
-
-print(content)
-# print(current_dir, dirs, files)
+# Запись ответа в файл
+answer.sort()
+with open('2.4_os.txt', 'w') as file:
+    for line in answer:
+        file.write(line + '\n')
